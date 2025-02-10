@@ -1,4 +1,4 @@
-# ![FishKat Logo](Components/Logo.svg) FishKat - A Phishing Detection AI Project 
+# 🎣🔍 FishKat - A Phishing Detection AI Project 
 
 ## 🛡️ Overview  
 Phishing attacks are among the most common cybersecurity threats, tricking users through deceptive emails, websites, and messages. This project leverages Machine Learning (ML) and Deep Learning (DL) to detect phishing attempts and classify URLs or emails as legitimate or fraudulent.  

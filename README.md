@@ -1,4 +1,4 @@
-# 🎣🔍 FishKat - A Phishing Detection AI Project 
+# ![FishKat Logo](Components/Logo.svg) FishKat - A Phishing Detection AI Project 
 
 ## 🛡️ Overview  
 Phishing attacks are among the most common cybersecurity threats, tricking users through deceptive emails, websites, and messages. This project leverages Machine Learning (ML) and Deep Learning (DL) to detect phishing attempts and classify URLs or emails as legitimate or fraudulent.  
@@ -19,7 +19,7 @@ Phishing attacks are among the most common cybersecurity threats, tricking users
 
 ## ⚙️ Installation  
 1️⃣ Clone the repository:  
-   ```bash
-   git clone https://github.com/your-username/phishing-detection-ai.git
-   cd phishing-detection-ai
-
+    ```bash
+    git clone https://github.com/your-username/phishing-detection-ai.git
+    cd phishing-detection-ai
+    ```

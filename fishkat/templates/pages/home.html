@@ -1,0 +1,98 @@
+{% extends 'layouts/base.html' %} 
+{% load static %} 
+{% block title %}
+<title>FishKat</title>
+{% endblock %} 
+{% block body %}
+<style>
+  .navbar{
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+  }
+  
+  .styledbg{
+    background: #0f0c29;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+</style>
+
+<!--NAVBAR-->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent">
+  <div class="container">
+    <a class="navbar-brand px-5 fs-1" href="#">
+      <!--LOGO-->
+      <img
+        src="{% static 'Icons/Logo.svg' %}"
+        alt="FishKat Logo"
+        style="height: 58px"
+      />
+      <span class="kanit-bold">FishKat</span>
+    </a>
+    <!--TOGGLE BTN-->
+    <button
+      class="navbar-toggler shadow-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--NAVIGATION LINKS-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-5 px-5 kanit-regular">
+        <li class="nav-item mx-3">
+          <a class="nav-link" aria-current="page" href="#">Phising Detection</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" aria-current="page" href="#">Password Analyzer</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="text-center text-white styledbg">
+  <div class="container">
+    <br><br><br><br><br><br>
+      <h1 class="kanit-bold">FishKat – Smarter Security, Safer Browsing</h1>
+      <p class="kanit-light">AI-powered phishing detection and password analysis at your fingertips.</p>
+    <br><br><br><br><br><br>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="text-center text-white styledbg">
+  <div class="container">
+    <br><br><br><br><br><br>
+    <h1 class="kanit-bold">Features</h1>
+    <br><br>
+    <div class="row">
+      <div class="col-md-4 ">
+        <img src="{% static 'Icons/phish.svg' %}" alt="Phishing Detection" style="height: 100px">
+        <h3 class="kanit-bold">
+          Phishing Detection</h3>
+        <p class="kanit-light">Detect phishing websites with our AI-powered tool.</p>
+      </div>
+      <div class="col-md-4 ">
+        <img src="{% static 'Icons/password.svg' %}" alt="Password Analysis" style="height: 100px">
+        <h3 class="kanit-bold">Password Analysis</h3>
+        <p class="kanit-light">Analyze your password strength and security.</p>
+      </div>
+      <div class="col-md-4 ">
+        <img src="{% static 'Icons/security.svg' %}" alt="Secure Browsing" style="height: 100px">
+        <h3 class="kanit-bold">Secure Browsing</h3>
+        <p class="kanit-light">Stay safe online with our security tools.</p>
+      </div>
+    </div>
+    <br><br><br><br><br><br>
+  </div>
+
+{% endblock %}

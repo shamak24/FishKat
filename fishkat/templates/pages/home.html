@@ -5,6 +5,48 @@
 {% endblock %} 
 {% block body %}
 <style>
+  .form-control{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 2px solid rgb(206, 118, 132);
+  }
+  .form-control:focus{
+    border-color: rgb(186, 97, 112);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px pink;
+  }
+  .form-control::placeholder{
+    color: rgb(206, 118, 132);
+  }
+
+  .form-control[type="password", type="text"]{
+    font-family: 'kanit-regular';
+  }
+  .btn{
+    background-color: rgb(206, 118, 132);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .btn:hover{
+    background-color: rgb(122, 66, 75);
+  }
+  #navigation:hover {
+    color: pink;
+    transform: scale(1.05);
+    transition: ease-in-out 0.3s;
+  }
+  /* #features:hover {
+    transform: scale(1.05);
+    transition: ease-in-out 0.3s;
+  } */
+  .navbar-brand:hover{
+    transform: scale(1.05);
+    transition: ease-in-out 0.3s;
+  }
   .navbar{
     background-color: transparent;
     backdrop-filter: blur(10px);
@@ -15,6 +57,16 @@
     background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
+  @media screen and (max-width: 358px) {
+    .navbar-brand {
+      font-size: 1.2rem;
+
+    }
+    #logo {
+      height: 30px;
+    }
+    
+  }
 </style>
 
 <!--NAVBAR-->
@@ -22,7 +74,7 @@
   <div class="container">
     <a class="navbar-brand px-5 fs-1" href="#">
       <!--LOGO-->
-      <img
+      <img id="logo"
         src="{% static 'Icons/Logo.svg' %}"
         alt="FishKat Logo"
         style="height: 58px"
@@ -43,15 +95,15 @@
     </button>
     <!--NAVIGATION LINKS-->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-5 px-5 kanit-regular">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-5 px-5 kanit-medium">
         <li class="nav-item mx-3">
-          <a class="nav-link" aria-current="page" href="#">Phising Detection</a>
+          <a class="nav-link active" aria-current="page" href="#phishing" id="navigation">Phishing Detection</a>
         </li>
         <li class="nav-item mx-3">
-          <a class="nav-link" aria-current="page" href="#">Password Analyzer</a>
+          <a class="nav-link active" aria-current="page" href="#password" id="navigation">Password Analyzer</a>
         </li>
         <li class="nav-item mx-3">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link active" href="#about" id="navigation">About</a>
         </li>
       </ul>
     </div>
@@ -62,31 +114,22 @@
 <section class="text-center text-white styledbg">
   <div class="container">
     <br><br><br><br><br><br>
-      <h1 class="kanit-bold">FishKat – Smarter Security, Safer Browsing</h1>
+      <h1 class="kanit-bold"><span style="color:pink">FishKat</span> – Smarter Security, Safer Browsing</h1>
       <p class="kanit-light">AI-powered phishing detection and password analysis at your fingertips.</p>
-    <br><br><br><br><br><br>
-  </div>
-</section>
-
-<!-- Features Section -->
-<section class="text-center text-white styledbg">
-  <div class="container">
-    <br><br><br><br><br><br>
-    <h1 class="kanit-bold">Features</h1>
-    <br><br>
+      <br><br><br>
     <div class="row">
-      <div class="col-md-4 ">
+      <div class="col-md-4 " id="features">
         <img src="{% static 'Icons/phish.svg' %}" alt="Phishing Detection" style="height: 100px">
         <h3 class="kanit-bold">
           Phishing Detection</h3>
         <p class="kanit-light">Detect phishing websites with our AI-powered tool.</p>
       </div>
-      <div class="col-md-4 ">
+      <div class="col-md-4" id="features">
         <img src="{% static 'Icons/password.svg' %}" alt="Password Analysis" style="height: 100px">
         <h3 class="kanit-bold">Password Analysis</h3>
         <p class="kanit-light">Analyze your password strength and security.</p>
       </div>
-      <div class="col-md-4 ">
+      <div class="col-md-4" id="features">
         <img src="{% static 'Icons/security.svg' %}" alt="Secure Browsing" style="height: 100px">
         <h3 class="kanit-bold">Secure Browsing</h3>
         <p class="kanit-light">Stay safe online with our security tools.</p>
@@ -94,5 +137,100 @@
     </div>
     <br><br><br><br><br><br>
   </div>
+</section>
+
+<!-- Phishing Detection Section -->
+<section class="text-center text-white styledbg" id="phishing">
+  <div class="container">
+    <br><br><br><br><br><br>
+    <h1 class="kanit-bold ">🕵🏻 Phishing Detector</h1>
+    <br><br>
+    <div class="container text-center px-5">
+    <p class="kanit-medium fs-5">Enter a URL to check if it's safe</p>
+    <input type="text" id="urlInput" class="form-control" placeholder="Enter URL here...">
+    <button class="btn mt-3" onclick="analyzeURL()">Analyze</button>
+    <div id="urlResult" class="result-card"></div>
+    </div>
+    <br><br><br><br><br><br>
+
+
+</section>
+
+<!-- Password Analyzer Section -->
+<section class="text-center text-white styledbg" id="password">
+  <div class="container">
+    <br><br><br><br><br><br>
+    <h1 class="kanit-bold">🔐 Password Strength Analyzer</h1>
+    <br><br>
+    <div class="container text-center px-5">
+      <p class="kanit-medium fs-5">Test your password strength</p>
+      <input type="password" id="passwordInput" class="form-control" placeholder="Enter password here..." oninput="checkPassword()">
+      <div class="strength-meter mt-3" id="strengthMeter"></div>
+      <div id="passwordResult" class="result-card"></div>
+    </div>
+    <br><br><br><br><br><br>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="text-center text-white styledbg" id="about">
+  <div class="container">
+    <br><br><br><br><br><br>
+    <h1 class="kanit-bold">About Us</h1>
+    <br><br>
+    <div class="container text-center px-5">
+      <p class="kanit-regular fs-4"><span style="color: pink;">FishKat</span> is an AI-powered website that detects and identifies phishing links. By 
+        analyzing website URLs and key features, it helps users recognize and avoid 
+        malicious sites. Fast, accurate, and easy to use. FishKat keeps your online 
+        experience safe and secure. With cutting-edge machine learning technology, 
+        we make cybersecurity simple, fast, and reliable because falling for fake links 
+        isn't an option. With real-time phishing detection and a built-in password 
+        strength analyzer, FishKat ensures your online security is never compromised. 
+        Stay protected, stay smart FishKat's got your back!
+         </p>
+    </div>
+    <br><br><br><br><br><br>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="text-center text-white styledbg">
+  <div class="container">
+    <br><br><br>
+    <h1 class="kanit-bold">
+      <img src="{% static 'Icons/Logo.svg' %}" alt="FishKat Logo" style="height: 40px">
+      FishKat</h1>
+    <p class="kanit-regular">Smarter Security, Safer Browsing</p>
+    <p class="kanit-light" style="color: pink;">@All rights reserved 2025 </p>
+    <br><br><br>
+  </div>
+</footer>
+
+{%block scripts%}
+<script>
+function analyzeURL() {
+  const url = document.getElementById('urlInput').value;
+  const resultDiv = document.getElementById('urlResult');
+  resultDiv.innerHTML = url.includes('phish') ? '<div class="alert alert-danger">🚨 Phishing Detected!</div>' : '<div class="alert alert-success">✅ Safe URL</div>';
+}
+
+function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const strengthMeter = document.getElementById('strengthMeter');
+            const resultDiv = document.getElementById('passwordResult');
+
+            let strength = 0;
+            if (password.length > 8) strength += 1;
+            if (/[A-Z]/.test(password)) strength += 1;
+            if (/[0-9]/.test(password)) strength += 1;
+            if (/[^a-zA-Z0-9]/.test(password)) strength += 1;
+
+            const colors = ['text-danger', 'text-warning', 'text-info', 'text-success'];
+            strengthMeter.className = 'strength-meter ' + colors[strength];
+
+            resultDiv.innerHTML = ['Weak', 'Moderate', 'Strong', 'Very Strong'][strength];
+  }
+</script>
+{%endblock%}
 
 {% endblock %}

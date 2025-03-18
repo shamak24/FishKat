@@ -1,8 +1,8 @@
-{% extends 'layouts/base.html' %} 
-{% load static %} 
+{% extends 'layouts/base.html' %}
+{% load static %}
 {% block title %}
 <title>FishKat</title>
-{% endblock %} 
+{% endblock %}
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/homestyle.css' %}">
 
@@ -122,7 +122,7 @@
       <p class="kanit-regular fs-5">Remove metadata from your files to protect your privacy and security. Metadata contains sensitive information about your files, such as location, author, and date of creation. By removing metadata, you can prevent data leaks and protect your personal information. FishKat's Metadata Remover is a fast, easy-to-use tool that helps you safeguard your files and stay secure online. Keep your data safe and your privacy protected with FishKat's Metadata Remover.</p>
     </div>
       <input type="file" id="imageInput" accept="image/*">
-      <button onclick="removeMetadata()">Remove Metadata</button>
+      <button onclick="removeMetadata()" class="btn">Remove Metadata</button>
       <button onclick="clearResults()" style="background-color: transparent; border: none;">
         <img src="{% static 'Icons/deleteIcon.svg' %}">
       </button>
@@ -132,7 +132,7 @@
       </div>
       <br>
       <a id="downloadLink" class="download" download="cleaned_image.png">
-        <button>Download Cleaned Image</button>
+        <button class="btn">Download Cleaned Image</button>
       </a>
     <br><br><br><br><br><br>
   </div>

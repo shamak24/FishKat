@@ -12,7 +12,7 @@ function clearResults() {
 function removeMetadata() {
     const fileInput = document.getElementById("imageInput");
     if (!fileInput.files.length) {
-        alert("Please select an image first.");
+        alert("Please select an image file first.");
         return;
     }
 

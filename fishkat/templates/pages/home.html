@@ -40,6 +40,9 @@
           <a class="nav-link active" aria-current="page" href="#password" id="navigation">Password Analyzer</a>
         </li>
         <li class="nav-item mx-3">
+          <a class="nav-link active" href="#metadata" id="navigation">Metadata Remover</a>
+        </li>
+        <li class="nav-item mx-3">
           <a class="nav-link active" href="#about" id="navigation">About</a>
         </li>
       </ul>
@@ -109,6 +112,30 @@
   </div>
 </section>
 
+<!--METADATA REMOVER-->
+<section class="text-center text-white styledbg" id="metadata">
+  <div class="container">
+    <br><br><br><br><br><br>
+    <h1 class="kanit-bold">🖼️ Image Metadata Remover</h1>
+    <br><br>
+    <div class="container text-center px-5">
+      <p class="kanit-regular fs-5">Remove metadata from your files to protect your privacy and security. Metadata contains sensitive information about your files, such as location, author, and date of creation. By removing metadata, you can prevent data leaks and protect your personal information. FishKat's Metadata Remover is a fast, easy-to-use tool that helps you safeguard your files and stay secure online. Keep your data safe and your privacy protected with FishKat's Metadata Remover.</p>
+    </div>
+      <input type="file" id="imageInput" accept="image/*">
+      <button onclick="removeMetadata()">Remove Metadata</button>
+      <br>
+      <div id="metadataResult" class="result-card">
+        <img id="preview" class="image-preview" alt="Preview will appear here">
+      </div>
+      <br>
+      <a id="downloadLink" class="download" download="cleaned_image.png">
+        <button>Download Cleaned Image</button>
+      </a>
+    <br><br><br><br><br><br>
+  </div>
+</section>
+
+
 <!-- About Section -->
 <section class="text-center text-white styledbg" id="about">
   <div class="container">
@@ -144,30 +171,9 @@
 </footer>
 
 {%block scripts%}
-<script>
-function analyzeURL() {
-  const url = document.getElementById('urlInput').value;
-  const resultDiv = document.getElementById('urlResult');
-  resultDiv.innerHTML = url.includes('phish') ? '<div class="alert alert-danger">🚨 Phishing Detected!</div>' : '<div class="alert alert-success">✅ Safe URL</div>';
-}
 
-function checkPassword() {
-            const password = document.getElementById('passwordInput').value;
-            const strengthMeter = document.getElementById('strengthMeter');
-            const resultDiv = document.getElementById('passwordResult');
-
-            let strength = 0;
-            if (password.length > 8) strength += 1;
-            if (/[A-Z]/.test(password)) strength += 1;
-            if (/[0-9]/.test(password)) strength += 1;
-            if (/[^a-zA-Z0-9]/.test(password)) strength += 1;
-
-            const colors = ['text-danger', 'text-warning', 'text-info', 'text-success'];
-            strengthMeter.className = 'strength-meter ' + colors[strength];
-
-            resultDiv.innerHTML = ['Weak', 'Moderate', 'Strong', 'Very Strong'][strength];
-  }
-</script>
+<script src="{% static 'js/metadata.js' %}"></script>
+<script src="{% static 'js/passwordRemove.js' %}"></script>
 {%endblock%}
 
 {% endblock %}

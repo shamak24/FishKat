@@ -123,6 +123,9 @@
     </div>
       <input type="file" id="imageInput" accept="image/*">
       <button onclick="removeMetadata()">Remove Metadata</button>
+      <button onclick="clearResults()" style="background-color: transparent; border: none;">
+        <img src="{% static 'Icons/deleteIcon.svg' %}">
+      </button>
       <br>
       <div id="metadataResult" class="result-card">
         <img id="preview" class="image-preview" alt="Preview will appear here">

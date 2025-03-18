@@ -1,3 +1,13 @@
+function clearResults() {
+    const fileInput = document.getElementById("imageInput");
+    fileInput.value = "";
+    const downloadLink = document.getElementById("downloadLink");
+    downloadLink.href = "";
+    const preview = document.getElementById("preview");
+    preview.src = "";
+    preview.style.display = "none";
+}
+
 
 function removeMetadata() {
     const fileInput = document.getElementById("imageInput");

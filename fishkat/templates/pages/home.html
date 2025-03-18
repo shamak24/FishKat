@@ -37,10 +37,10 @@
           <a class="nav-link active" aria-current="page" href="#phishing" id="navigation">Phishing Detection</a>
         </li>
         <li class="nav-item mx-3">
-          <a class="nav-link active" aria-current="page" href="#password" id="navigation">Password Analyzer</a>
+          <a class="nav-link active" href="#metadata" id="navigation">Metadata Remover</a>
         </li>
         <li class="nav-item mx-3">
-          <a class="nav-link active" href="#metadata" id="navigation">Metadata Remover</a>
+          <a class="nav-link active" aria-current="page" href="#password" id="navigation">Password Analyzer</a>
         </li>
         <li class="nav-item mx-3">
           <a class="nav-link active" href="#about" id="navigation">About</a>
@@ -65,9 +65,9 @@
         <p class="kanit-light">Detect phishing websites with our AI-powered tool.</p>
       </div>
       <div class="col-md-4" id="features">
-        <img src="{% static 'Icons/password.svg' %}" alt="Password Analysis" style="height: 100px">
-        <h3 class="kanit-bold">Password Analysis</h3>
-        <p class="kanit-light">Analyze your password strength and security.</p>
+        <img src="{% static 'Icons/metaIcon.svg' %}" alt="MetadataRemover" style="height: 100px">
+        <h3 class="kanit-bold">Image Metadata Remover</h3>
+        <p class="kanit-light">Protect your privacy by removing metadata from images</p>
       </div>
       <div class="col-md-4" id="features">
         <img src="{% static 'Icons/security.svg' %}" alt="Secure Browsing" style="height: 100px">
@@ -96,22 +96,6 @@
 
 </section>
 
-<!-- Password Analyzer Section -->
-<section class="text-center text-white styledbg" id="password">
-  <div class="container">
-    <br><br><br><br><br><br>
-    <h1 class="kanit-bold">🔐 Password Strength Analyzer</h1>
-    <br><br>
-    <div class="container text-center px-5">
-      <p class="kanit-medium fs-5">Test your password strength</p>
-      <input type="password" id="passwordInput" class="form-control" placeholder="Enter password here..." oninput="checkPassword()">
-      <div class="strength-meter mt-3" id="strengthMeter"></div>
-      <div id="passwordResult" class="result-card"></div>
-    </div>
-    <br><br><br><br><br><br>
-  </div>
-</section>
-
 <!--METADATA REMOVER-->
 <section class="text-center text-white styledbg" id="metadata">
   <div class="container">
@@ -119,7 +103,7 @@
     <h1 class="kanit-bold">🖼️ Image Metadata Remover</h1>
     <br><br>
     <div class="container text-center px-5">
-      <p class="kanit-regular fs-5">Remove metadata from your files to protect your privacy and security. Metadata contains sensitive information about your files, such as location, author, and date of creation. By removing metadata, you can prevent data leaks and protect your personal information. FishKat's Metadata Remover is a fast, easy-to-use tool that helps you safeguard your files and stay secure online. Keep your data safe and your privacy protected with FishKat's Metadata Remover.</p>
+      <p class="kanit-regular fs-5">Remove metadata from your images to protect your privacy and security. Metadata contains sensitive information about your images, such as location, author, and date of creation. By removing metadata, you can prevent data leaks and protect your personal information. FishKat's Metadata Remover is a fast, easy-to-use tool that helps you safeguard your images and stay secure online. Keep your data safe and your privacy protected with FishKat's Metadata Remover.</p>
     </div>
       <input type="file" id="imageInput" accept="image/*">
       <button onclick="removeMetadata()" class="btn">Remove Metadata</button>
@@ -138,6 +122,21 @@
   </div>
 </section>
 
+<!-- Password Analyzer Section -->
+<section class="text-center text-white styledbg" id="password">
+  <div class="container">
+    <br><br><br><br><br><br>
+    <h1 class="kanit-bold">🔐 Password Strength Analyzer</h1>
+    <br><br>
+    <div class="container text-center px-5">
+      <p class="kanit-medium fs-5">Test your password strength</p>
+      <input type="password" id="passwordInput" class="form-control" placeholder="Enter password here..." oninput="checkPassword()">
+      <div class="strength-meter mt-3" id="strengthMeter"></div>
+      <div id="passwordResult" class="result-card"></div>
+    </div>
+    <br><br><br><br><br><br>
+  </div>
+</section>
 
 <!-- About Section -->
 <section class="text-center text-white styledbg" id="about">

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fishkat',
+    'url_checker',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+VT_API_KEY = 'e769ef536b21b97784e02f768f7d4c9e9d84e588f2812134e7111168a5b0560b'

@@ -34,7 +34,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-5 px-5 kanit-medium">
         <li class="nav-item mx-3">
-          <a class="nav-link active" aria-current="page" href="#phishing" id="navigation">Phishing Detection</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'phishing_index' %}" id="navigation">Phishing Detection</a>
         </li>
         <li class="nav-item mx-3">
           <a class="nav-link active" href="#metadata" id="navigation">Metadata Remover</a>
@@ -80,21 +80,20 @@
 </section>
 
 <!-- Phishing Detection Section -->
-<section class="text-center text-white styledbg" id="phishing">
+{% comment %} <section class="text-center text-white styledbg" id="phishing">
   <div class="container">
     <br><br><br><br><br><br>
     <h1 class="kanit-bold ">🕵🏻 Phishing Detector</h1>
     <br><br>
     <div class="container text-center px-5">
-    <p class="kanit-medium fs-5">Enter a URL to check if it's safe</p>
-    <input type="text" id="urlInput" class="form-control" placeholder="Enter URL here...">
-    <button class="btn mt-3" onclick="analyzeURL()">Analyze</button>
-    <div id="urlResult" class="result-card"></div>
-    </div>
+    <p class="kanit-medium fs-5">Check if a URL is Safe</p>
+    <input type="text" id="urlInput" class="form-control styledform" placeholder="Enter URL here...">
+    <button class="btn mt-3" onclick="checkUrl()">Analyze</button>
+    <p id = "result"></p>
     <br><br><br><br><br><br>
 
 
-</section>
+</section> {% endcomment %}
 
 <!--METADATA REMOVER-->
 <section class="text-center text-white styledbg" id="metadata">
@@ -102,22 +101,23 @@
     <br><br><br><br><br><br>
     <h1 class="kanit-bold">🖼️ Image Metadata Remover</h1>
     <br><br>
-    <div class="container text-center px-5">
-      <p class="kanit-regular fs-5">Remove metadata from your images to protect your privacy and security. Metadata contains sensitive information about your images, such as location, author, and date of creation. By removing metadata, you can prevent data leaks and protect your personal information. FishKat's Metadata Remover is a fast, easy-to-use tool that helps you safeguard your images and stay secure online. Keep your data safe and your privacy protected with FishKat's Metadata Remover.</p>
+    <div class="container text-center">
+      <p class="kanit-regular fs-5">Remove metadata from your images to protect your privacy and security.</p>
     </div>
-      <input type="file" id="imageInput" accept="image/*">
-      <button onclick="removeMetadata()" class="btn">Remove Metadata</button>
+      <div style="display: flex; justify-content: center;">
+      <input type="file" id="imageInput" accept="image/*" class="form-control metaform">
       <button onclick="clearResults()" style="background-color: transparent; border: none;">
         <img src="{% static 'Icons/deleteIcon.svg' %}">
       </button>
+      </div>
+      <button onclick="removeMetadata()" class="btn">Remove Metadata</button>
+      
       <br>
       <div id="metadataResult" class="result-card">
-        <img id="preview" class="image-preview" alt="Preview will appear here">
+        <img id="preview" class="image-preview" alt="" style="max-width: 100%; height: auto;">
       </div>
       <br>
-      <a id="downloadLink" class="download" download="cleaned_image.png">
-        <button class="btn">Download Cleaned Image</button>
-      </a>
+      <a class="btn" role="button" id="downloadLink" download="cleaned_image.png" aria-disabled="true">Download Cleaned Image</a>
     <br><br><br><br><br><br>
   </div>
 </section>
@@ -130,7 +130,7 @@
     <br><br>
     <div class="container text-center px-5">
       <p class="kanit-medium fs-5">Test your password strength</p>
-      <input type="password" id="passwordInput" class="form-control" placeholder="Enter password here..." oninput="checkPassword()">
+      <input type="password" id="passwordInput" class="form-control styledform" placeholder="Enter password here..." oninput="checkPassword()">
       <div class="strength-meter mt-3" id="strengthMeter"></div>
       <div id="passwordResult" class="result-card"></div>
     </div>
@@ -142,18 +142,10 @@
 <section class="text-center text-white styledbg" id="about">
   <div class="container">
     <br><br><br><br><br><br>
-    <h1 class="kanit-bold">About Us</h1>
+    <h1 class="kanit-bold">💬 About Us</h1>
     <br><br>
-    <div class="container text-center px-5">
-      <p class="kanit-regular fs-4"><span style="color: pink;">FishKat</span> is an AI-powered website that detects and identifies phishing links. By 
-        analyzing website URLs and key features, it helps users recognize and avoid 
-        malicious sites. Fast, accurate, and easy to use. FishKat keeps your online 
-        experience safe and secure. With cutting-edge machine learning technology, 
-        we make cybersecurity simple, fast, and reliable because falling for fake links 
-        isn't an option. With real-time phishing detection and a built-in password 
-        strength analyzer, FishKat ensures your online security is never compromised. 
-        Stay protected, stay smart FishKat's got your back!
-         </p>
+    <div class="container text-center px-5 bigtextcontainer">
+      <p class="kanit-regular fs-4 bigtext"><span style="color: pink;">FishKat</span> is an AI-powered website that detects phishing links and helps users avoid malicious sites. It analyzes URLs and key features using machine learning to provide fast, accurate, and reliable protection for safe browsing.With built-in cyber security tools, FishKat ensures your online security is never compromised. Stay protected, stay smart FishKat's got your back!</p>
     </div>
     <br><br><br><br><br><br>
   </div>
@@ -176,6 +168,7 @@
 
 <script src="{% static 'js/metadata.js' %}"></script>
 <script src="{% static 'js/passwordRemove.js' %}"></script>
+
 {%endblock%}
 
 {% endblock %}

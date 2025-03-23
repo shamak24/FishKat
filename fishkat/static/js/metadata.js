@@ -2,7 +2,7 @@ function clearResults() {
     const fileInput = document.getElementById("imageInput");
     fileInput.value = "";
     const downloadLink = document.getElementById("downloadLink");
-    downloadLink.href = "";
+    downloadLink.ariaDisabled = true;
     const preview = document.getElementById("preview");
     preview.src = "";
     preview.style.display = "none";
@@ -42,8 +42,8 @@ function removeMetadata() {
 
             // Enable download link
             const downloadLink = document.getElementById("downloadLink");
+            downloadLink.ariaDisabled = false;
             downloadLink.href = cleanedImage;
-            downloadLink.style.display = "block";
         };
     };
 

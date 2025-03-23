@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FishKat - URL Checker</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff66b2, #8a2be2);
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        input {
+            background: white;
+            color: black;
+        }
+        button {
+            background: #ff66b2;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Check if a URL is Safe</h2>
+        <input type="text" id="urlInput" placeholder="Enter a URL">
+        <button onclick="checkUrl()">Check</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkUrl() {
+            let url = document.getElementById("urlInput").value;
+            let resultElement = document.getElementById("result");
+    
+            if (!url) {
+                resultElement.innerHTML = "⚠️ Please enter a URL!";
+                return;
+            }
+    
+            // Call the Django API
+            console.log(JSON.stringify({
+                url: url
+            }));
+            fetch("{% url 'check_url' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({
+                    url: url
+                })
+            })
+            .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        resultElement.innerHTML = "❌ Error: " + data.error;
+                    } else if (data.safe === false) {
+                        resultElement.innerHTML = "⚠️ This URL is dangerous!";
+                        resultElement.style.color = "red";
+                    } else {
+                        resultElement.innerHTML = "✅ This URL is safe.";
+                        resultElement.style.color = "lightgreen";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    resultElement.innerHTML = "⚠️ An error occurred while checking.";
+                })
+        }
+    </script>
+    
+
+</body>
+</html>

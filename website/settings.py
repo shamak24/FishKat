@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -126,4 +127,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-VT_API_KEY = 'e769ef536b21b97784e02f768f7d4c9e9d84e588f2812134e7111168a5b0560b'
+load_dotenv()
+VT_API_KEY = os.getenv('VT_API_KEY')

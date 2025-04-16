@@ -3,9 +3,6 @@ function clearResults() {
     fileInput.value = "";
     const downloadLink = document.getElementById("downloadLink");
     downloadLink.ariaDisabled = true;
-    const preview = document.getElementById("preview");
-    preview.src = "";
-    preview.style.display = "none";
 }
 
 
@@ -34,11 +31,6 @@ function removeMetadata() {
 
             // Convert to PNG (strips metadata)
             const cleanedImage = canvas.toDataURL("image/png");
-
-            // Show preview
-            const preview = document.getElementById("preview");
-            preview.src = cleanedImage;
-            preview.style.display = "block";
 
             // Enable download link
             const downloadLink = document.getElementById("downloadLink");

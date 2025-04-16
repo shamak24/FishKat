@@ -6,49 +6,7 @@
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/homestyle.css' %}">
 
-<!--NAVBAR-->
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent">
-  <div class="container">
-    <a class="navbar-brand px-5 fs-1" href="#">
-      <!--LOGO-->
-      <img id="logo"
-        src="{% static 'Icons/Logo.svg' %}"
-        alt="FishKat Logo"
-      />
-      <span class="kanit-bold">FishKat</span>
-    </a>
-    <!--TOGGLE BTN-->
-    <button
-      class="navbar-toggler shadow-none"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-      style="border: none;"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!--NAVIGATION LINKS-->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-5 px-5 kanit-medium">
-        <li class="nav-item mx-3">
-          <a class="nav-link active" aria-current="page" href="{% url 'phishing_index' %}" id="navigation">Phishing Detection</a>
-        </li>
-        <li class="nav-item mx-3">
-          <a class="nav-link active" href="#metadata" id="navigation">Metadata Remover</a>
-        </li>
-        <li class="nav-item mx-3">
-          <a class="nav-link active" aria-current="page" href="#password" id="navigation">Password Analyzer</a>
-        </li>
-        <li class="nav-item mx-3">
-          <a class="nav-link active" href="#about" id="navigation">About</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+
 
 <!-- Hero Section -->
 <section class="text-center text-white styledbg">
@@ -97,7 +55,7 @@
 
 <!--METADATA REMOVER-->
 <section class="text-center text-white styledbg" id="metadata">
-  <div class="container">
+  <div class="container" style="border-color: #5a0fbc; border-width: 2px; border-style: solid; border-radius: 10px;">
     <br><br><br><br><br><br>
     <h1 class="kanit-bold">🖼️ Image Metadata Remover</h1>
     <br><br>
@@ -105,7 +63,7 @@
       <p class="kanit-regular fs-5">Remove metadata from your images to protect your privacy and security.</p>
     </div>
       <div style="display: flex; justify-content: center;">
-      <input type="file" id="imageInput" accept="image/*" class="form-control metaform">
+      <input type="file" id="imageInput" accept=".png,.jpg,.jpeg," class="form-control metaform">
       <button onclick="clearResults()" style="background-color: transparent; border: none;">
         <img src="{% static 'Icons/deleteIcon.svg' %}">
       </button>
@@ -113,9 +71,6 @@
       <button onclick="removeMetadata()" class="btn">Remove Metadata</button>
       
       <br>
-      <div id="metadataResult" class="result-card">
-        <img id="preview" class="image-preview" alt="" style="max-width: 100%; height: auto;">
-      </div>
       <br>
       <a class="btn" role="button" id="downloadLink" download="cleaned_image.png" aria-disabled="true">Download Cleaned Image</a>
     <br><br><br><br><br><br>
@@ -150,19 +105,6 @@
     <br><br><br><br><br><br>
   </div>
 </section>
-
-<!-- Footer Section -->
-<footer class="text-center text-white styledbg">
-  <div class="container">
-    <br><br><br>
-    <h1 class="kanit-bold">
-      <img src="{% static 'Icons/Logo.svg' %}" alt="FishKat Logo" style="height: 40px">
-      FishKat</h1>
-    <p class="kanit-regular">Smarter Security, Safer Browsing</p>
-    <p class="kanit-light" style="color: pink;">@All rights reserved 2025 </p>
-    <br><br><br>
-  </div>
-</footer>
 
 {%block scripts%}
 

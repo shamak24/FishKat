@@ -1,0 +1,17 @@
+
+input, button {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+input {
+    background: white;
+    color: black;
+}
+button {
+    background: rgb(206, 118, 132);
+    color: white;
+    cursor: pointer;
+}

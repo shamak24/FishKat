@@ -1,92 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FishKat - URL Checker</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #ff66b2, #8a2be2);
-            color: white;
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            max-width: 500px;
-            margin: 100px auto;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-        }
-        input, button {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-        }
-        input {
-            background: white;
-            color: black;
-        }
-        button {
-            background: #ff66b2;
-            color: white;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
+{% extends 'layouts/base.html'%}
+{% load static %}
+{%block title%} 
+<title>URL Checker</title> 
+{%endblock%}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/phishing.css' %}">
+{% endblock %}
+{%block body%}
+    
+    <section class="text-white styledbg mt-5">
+        <div class="d-flex align-items-center justify-content-center vh-100">
+            <div class="card shadow p-4 bg-transparent text-light" style="width: 400px; border-color: #5a0fbc; " id="formCard">
+                <h2 class="text-center mb-4 kanit-bold">Phishing Detection</h2>
+                <h4 class="text-center mb-4">Check if a URL is Safe</h4>
+                <input type="text" id="urlInput" placeholder="Enter a URL" class="form-control mb-3" required>
+                <div class="d-flex justify-content-center">
+                    <button class="px-2" id="checkButton">Check</button>
+                </div>
+            </div>
+        </div>
 
-    <div class="container">
+
+    <!-- <div class="container">
+        <br><br><br><br><br><br>
         <h2>Check if a URL is Safe</h2>
         <input type="text" id="urlInput" placeholder="Enter a URL">
-        <button onclick="checkUrl()">Check</button>
+        <button id="checkButton">Check</button>
         <p id="result"></p>
-    </div>
+        <br><br><br><br><br><br>
+    </div> -->
+    </section>
 
-    <script>
-        function checkUrl() {
-            let url = document.getElementById("urlInput").value;
-            let resultElement = document.getElementById("result");
+    <script src="{% static 'js/phishing.js' %}"></script>
     
-            if (!url) {
-                resultElement.innerHTML = "⚠️ Please enter a URL!";
-                return;
-            }
     
-            // Call the Django API
-            console.log(JSON.stringify({
-                url: url
-            }));
-            fetch("{% url 'check_url' %}", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: new URLSearchParams({
-                    url: url
-                })
-            })
-            .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        resultElement.innerHTML = "❌ Error: " + data.error;
-                    } else if (data.safe === false) {
-                        resultElement.innerHTML = "⚠️ This URL is dangerous!";
-                        resultElement.style.color = "red";
-                    } else {
-                        resultElement.innerHTML = "✅ This URL is safe.";
-                        resultElement.style.color = "lightgreen";
-                    }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    resultElement.innerHTML = "⚠️ An error occurred while checking.";
-                })
-        }
-    </script>
-    
-
-</body>
-</html>
+{% endblock %}

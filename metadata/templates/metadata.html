@@ -83,7 +83,7 @@
 
 <div class="container d-flex flex-column align-items-center justify-content-center vh-100">
     <div class="card bg-transparent text-white">
-      <h3 class="text-center mb-4">🖼️ Image Metadata Remover</h3>
+      <h3 class="text-center mb-4 kanit-bold">🖼️ Image Metadata Remover</h3>
   
       <div style="display: flex; justify-content: center;">
         <input type="file" id="imageInput" accept=".png,.jpg,.jpeg," class="form-control metaform">
@@ -91,9 +91,9 @@
         <img src="{% static 'Icons/deleteIcon.svg' %}">
         </button>
     </div>
-        <button onclick="removeMetadata()" class="btn btn-primary mt-3">Remove Metadata</button>
+        <button onclick="removeMetadata()" class="btn btn-primary mt-3 kanit-regular">Remove Metadata</button>
   
-    <a id="downloadLink" style="display: none;" download="cleaned_image.png">Download Cleaned Image</a>
+    <a id="downloadLink" style="display: none;" download="cleaned_image.png" class="kanit-regular">Download Cleaned Image</a>
 
     <script src="{% static 'js/metadata.js' %}"></script>
     

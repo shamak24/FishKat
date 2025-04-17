@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'url_checker',
     'metadata',
     'unshortner',
+    'endecode'
 ]
 
 MIDDLEWARE = [

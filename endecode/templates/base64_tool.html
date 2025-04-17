@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %} 
-<title>URL Unshortener</title> 
+<title>Base64 Tool</title> 
 {% endblock %}
 
 {% block styles %}
@@ -84,34 +84,38 @@
 {% block body %}
 <div class="container d-flex flex-column align-items-center justify-content-center vh-100">
   <div class="card bg-transparent text-white">
-    <h3 class="text-center mb-4 kanit-bold">🔗 URL Unshortener</h3>
-
-    <form method="post" class="mb-3">
-      {% csrf_token %}
-      <div class="mb-3">
-        <label for="short_url" class="form-label kanit-regular">Enter Shortened URL</label>
-        <input type="url" name="short_url" id="short_url" class="form-control" placeholder="https://bit.ly/..." required>
+    <h3 class="text-center mb-4 kanit-bold">Base64 Tool</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="input_text" class="form-label kanit-regular">Input Text</label>
+          <textarea name="input_text" id="input_text" rows="4" class="form-control kanit-regular" required >{{ input_text }}</textarea>
+        </div>
+        <div class="d-flex justify-content-between">
+          <button name="action" value="encode" class="btn btn-success w-45 kanit-regular">Encode</button>
+          <button name="action" value="decode" class="btn btn-warning w-45 kanit-regular">Decode</button>
+        </div>
+      </form>
+  
+      {% if result %}
+      <div class="mt-4">
+        <label class="form-label kanit-regular">🔍 Result:</label>
+        <div class="input-group">
+          <textarea id="result" class="form-control kanit-regular" readonly rows="3">{{ result }}</textarea>
+          <button class="btn btn-copy kanit-regular" onclick="copyResult()">Copy</button>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary w-100 kanit-regular">Unshorten</button>
-    </form>
-
-    {% if final_url %}
-    <div class="mt-4">
-      <label class="form-label kanit-regular">🔓 Final URL:</label>
-      <div class="input-group">
-        <input type="text" id="finalUrl" class="form-control" value="{{ final_url }}" readonly>
-        <button class="btn btn-copy kanit-regular" type="button" onclick="copyToClipboard()">Copy</button>
+      {% elif error %}
+      <div class="alert alert-danger mt-3" role="alert">
+        {{ error }}
       </div>
+      {% endif %}
     </div>
-    {% elif error %}
-    <div class="alert alert-danger mt-3 kanit-regular" role="alert">
-      {{ error }}
-    </div>
-    {% endif %}
-  </div>
 </div>
 
+{%block scripts%}
 <script>
+
   function showToast(message, status) {
     const toastEl = document.getElementById('Toast');
     const toastMsg = document.getElementById('toastMessage');
@@ -130,15 +134,14 @@
     toast.show();
   }
 
-  function copyToClipboard() {
-    const urlField = document.getElementById("finalUrl");
-    urlField.select();
-    urlField.setSelectionRange(0, 99999); // for mobile
-    navigator.clipboard.writeText(urlField.value).then(() => {
-      showToast("✅ URL copied to clipboard!", 'success');
-    }).catch(err => {
-      showToast("❌ Failed to copy URL: " + err, 'danger');
-    });
+  function copyResult() {
+    const output = document.getElementById("result");
+    output.select();
+    output.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    showToast("Copied to clipboard!", "success");
   }
 </script>
+{%endblock%}
+
 {% endblock %}

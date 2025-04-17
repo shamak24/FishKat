@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'unshortner',
     'endecode',
     'passwordgen',
+    'hashgen',
 ]
 
 MIDDLEWARE = [

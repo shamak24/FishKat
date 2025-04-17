@@ -11,7 +11,10 @@ input {
     color: black;
 }
 button {
-    background: rgb(206, 118, 132);
+    background: #6f42c1;
     color: white;
     cursor: pointer;
 }
+button:hover {
+    background: #5a32a3;
+} 

@@ -1,0 +1,170 @@
+{% extends 'layouts/base.html'%}
+{% load static %}
+
+{% block title %} 
+<title>Hash Generator</title> 
+{% endblock %}
+
+{% block styles %}
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff4dff, #8e2de2);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin: 0;
+    }
+    .card {
+      border-radius: 1rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      background-color: #2d2d2d;
+      padding: 2rem;
+      width: 100%;
+      max-width: 500px;
+      margin: 1rem;
+    }
+    .btn-primary {
+      background-color: #6f42c1;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #5a35a0;
+    }
+    .btn-copy {
+      background-color: #6f42c1;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    .btn-copy:hover {
+      background-color: #5a35a0;
+    }
+    .form-control {
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .form-label {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .alert {
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .alert-danger {
+      background-color: #ff4d4d;
+      color: white;
+    }
+    @media (max-width: 768px) {
+      .card {
+        padding: 1.5rem;
+      }
+      .btn-primary, .btn-copy {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+<div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 125vh;">
+  <div class="card bg-transparent text-white">
+    <h3 class="text-center mb-4 kanit-bold">#️⃣ Hash Generator & Verifier</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="text_input" class="form-label">Input Text</label>
+          <textarea name="text_input" id="text_input" rows="3" class="form-control" required>{{ text_input }}</textarea>
+        </div>
+  
+        <div class="mb-3">
+          <label for="algorithm" class="form-label">Select Hash Algorithm</label>
+          <select name="algorithm" id="algorithm" class="form-select">
+            <option value="md5" {% if algorithm == 'md5' %}selected{% endif %}>MD5</option>
+            <option value="sha1" {% if algorithm == 'sha1' %}selected{% endif %}>SHA1</option>
+            <option value="sha256" {% if algorithm == 'sha256' %}selected{% endif %}>SHA256</option>
+          </select>
+        </div>
+  
+        <div class="d-grid mb-3">
+          <button type="submit" class="btn btn-custom btn-primary">Generate Hash</button>
+        </div>
+  
+        {% if generated_hash %}
+        <div class="mb-3">
+          <label class="form-label">🔢 Generated Hash</label>
+          <div class="input-group">
+            <input type="text" id="generatedHash" class="form-control" value="{{ generated_hash }}" readonly>
+            <button type="button" class="btn btn-custom btn-copy" onclick="copyHash()">Copy</button>
+          </div>
+        </div>
+        {% endif %}
+  
+        <div class="mb-3 mt-4">
+          <label for="hash_to_verify" class="form-label">🔍 Verify Against This Hash</label>
+          <input type="text" name="hash_to_verify" id="hash_to_verify" class="form-control" value="{{ hash_to_verify }}">
+        </div>
+  
+        <div class="d-grid">
+          <button name="action" value="verify" class="btn btn-warning">Verify Hash</button>
+        </div>
+  
+        {% if verification_result %}
+        {% if hash_match %}
+        <div class="alert alert-success mt-3" role="alert">
+          {{ verification_result }}
+        </div>
+      {% else %}
+        <div class="alert alert-danger mt-3" role="alert">
+          {{ verification_result }}
+        </div>
+      {% endif %}
+      
+        {% endif %}
+      </form>
+    </div>
+</div>
+
+<script>
+  function showToast(message, status) {
+    const toastEl = document.getElementById('Toast');
+    const toastMsg = document.getElementById('toastMessage');
+    toastMsg.style.fontWeight = 'bold';
+    
+    toastMsg.textContent = message;
+    if (status === 'success'){
+        toastMsg.style.color = 'green'; 
+    }else if (status === 'danger'){
+        toastMsg.style.color = 'red';
+    }else if (status === 'warning'){
+        toastMsg.style.color = 'orange';
+    }
+    
+    const toast = new bootstrap.Toast(toastEl);
+    toast.show();
+  }
+
+  function copyHash() {
+    const hashInput = document.getElementById("generatedHash");
+    hashInput.select();
+    hashInput.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    showToast("✅ Hash copied to clipboard!");
+  }
+</script>
+{% endblock %}

@@ -9,7 +9,6 @@
   <style>
     body {
       background: linear-gradient(135deg, #ff4dff, #8e2de2);
-      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -88,13 +87,13 @@
     <form method="post">
         {% csrf_token %}
         <div class="mb-3">
-          <label for="text_input" class="form-label">Input Text</label>
-          <textarea name="text_input" id="text_input" rows="3" class="form-control" required>{{ text_input }}</textarea>
+          <label for="text_input" class="form-label kanit-regular">Input Text</label>
+          <textarea name="text_input" id="text_input" rows="3" class="form-control kanit-regular" required>{{ text_input }}</textarea>
         </div>
   
         <div class="mb-3">
-          <label for="algorithm" class="form-label">Select Hash Algorithm</label>
-          <select name="algorithm" id="algorithm" class="form-select">
+          <label for="algorithm" class="form-label kanit-regular">Select Hash Algorithm</label>
+          <select name="algorithm" id="algorithm" class="form-select kanit-regular">
             <option value="md5" {% if algorithm == 'md5' %}selected{% endif %}>MD5</option>
             <option value="sha1" {% if algorithm == 'sha1' %}selected{% endif %}>SHA1</option>
             <option value="sha256" {% if algorithm == 'sha256' %}selected{% endif %}>SHA256</option>
@@ -102,35 +101,35 @@
         </div>
   
         <div class="d-grid mb-3">
-          <button type="submit" class="btn btn-custom btn-primary">Generate Hash</button>
+          <button type="submit" class="btn btn-custom btn-primary kanit-regular">Generate Hash</button>
         </div>
   
         {% if generated_hash %}
         <div class="mb-3">
-          <label class="form-label">🔢 Generated Hash</label>
+          <label class="form-label kanit-regular">🔢 Generated Hash</label>
           <div class="input-group">
-            <input type="text" id="generatedHash" class="form-control" value="{{ generated_hash }}" readonly>
-            <button type="button" class="btn btn-custom btn-copy" onclick="copyHash()">Copy</button>
+            <input type="text" id="generatedHash" class="form-control kanit-regular" value="{{ generated_hash }}" readonly>
+            <button type="button" class="btn btn-custom btn-copy kanit-regular" onclick="copyHash()">Copy</button>
           </div>
         </div>
         {% endif %}
   
         <div class="mb-3 mt-4">
-          <label for="hash_to_verify" class="form-label">🔍 Verify Against This Hash</label>
-          <input type="text" name="hash_to_verify" id="hash_to_verify" class="form-control" value="{{ hash_to_verify }}">
+          <label for="hash_to_verify" class="form-label kanit-regular">🔍 Verify Against This Hash</label>
+          <input type="text" name="hash_to_verify" id="hash_to_verify" class="form-control kanit-regular" value="{{ hash_to_verify }}">
         </div>
   
         <div class="d-grid">
-          <button name="action" value="verify" class="btn btn-warning">Verify Hash</button>
+          <button name="action" value="verify" class="btn btn-warning kanit-regular">Verify Hash</button>
         </div>
   
         {% if verification_result %}
         {% if hash_match %}
-        <div class="alert alert-success mt-3" role="alert">
+        <div class="alert alert-success mt-3 kanit-regular" role="alert">
           {{ verification_result }}
         </div>
       {% else %}
-        <div class="alert alert-danger mt-3" role="alert">
+        <div class="alert alert-danger mt-3 kanit-regular" role="alert">
           {{ verification_result }}
         </div>
       {% endif %}

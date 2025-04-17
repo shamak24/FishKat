@@ -7,9 +7,7 @@
 <link rel="stylesheet" href="{% static 'css/phishing.css' %}">
 {% endblock %}
 {%block body%}
-    
-    <section class="text-white styledbg mt-5">
-        <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="d-flex align-items-center justify-content-center styledbg" style="min-height: 120vh;">
             <div class="card shadow p-4 bg-transparent text-light" style="width: 400px; border-color: #5a0fbc; " id="formCard">
                 <h2 class="text-center mb-4 kanit-bold">🐟Phishing Detection</h2>
                 <h4 class="text-center mb-4 kanit-regular">Check if a URL is Safe</h4>
@@ -17,10 +15,18 @@
                 <div class="d-flex justify-content-center">
                     <button class="px-2" id="checkButton">Check</button>
                 </div>
+                
+                    <div class="alert mt-3" id="alertDiv" style="display: none; background-color: rgb(219, 168, 255); border-color: #5a0fbc;">
+                        <p class="fs-5 fw-bold" id="harmless" style="color: green;"></p>
+                        <p class="fs-5 fw-bold" id="suspicious" style="color: rgb(148, 96, 0);"></p>
+                        <p class="fs-5 fw-bold" id="malicious" style="color: red;"></p>
+                        <p class="fs-5 fw-bold" id="result1" style="color: darkblue;"></p>
+                        <p class="fs-5 fw-bold" id="result2" style="color: darkblue;"></p>
+                    </div>
+                    
+
             </div>
         </div>
-
-    </section>
 
     
 

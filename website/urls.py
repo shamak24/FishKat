@@ -8,6 +8,7 @@ from url_checker import urls
 from metadata import urls
 from unshortner import urls
 from endecode import urls
+from passwordgen import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls), 
@@ -16,4 +17,5 @@ urlpatterns = [
     path("metadata_remove/", include("metadata.urls")),
     path("unshortner/", include("unshortner.urls")),
     path("endecode/", include("endecode.urls")),
+    path("passwordgen/", include("passwordgen.urls")),
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

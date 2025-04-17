@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'fishkat',
     'url_checker',
+    'metadata',
+    'unshortner',
 ]
 
 MIDDLEWARE = [

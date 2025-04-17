@@ -1,0 +1,101 @@
+{% extends 'layouts/base.html'%}
+{% load static %}
+{%block title%} 
+<title>Metadata Remover</title> 
+{%endblock%}
+{% block styles %}
+<!-- <link rel="stylesheet" href="{% static 'css/phishing.css' %}"> -->
+<style>
+    body {
+      background: linear-gradient(135deg, #ff4dff, #8e2de2);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+    .card {
+      border-radius: 1rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      background-color: #2d2d2d;
+      padding: 2rem;
+      width: 100%;
+      max-width: 500px;
+      margin: 1rem;
+    }
+    .btn-primary {
+      background-color: #6f42c1;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #5a35a0;
+    }
+    .btn-copy {
+      background-color: #6f42c1;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    .btn-copy:hover {
+      background-color: #5a35a0;
+    }
+    .form-control {
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .form-label {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .alert {
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .alert-danger {
+      background-color: #ff4d4d;
+      color: white;
+    }
+    @media (max-width: 768px) {
+      .card {
+        padding: 1.5rem;
+      }
+      .btn-primary, .btn-copy {
+        font-size: 0.9rem;
+      }
+    }
+</style>
+{% endblock %}
+{%block body%}
+
+<div class="container d-flex flex-column align-items-center justify-content-center vh-100">
+    <div class="card bg-transparent text-white">
+      <h3 class="text-center mb-4">🖼️ Image Metadata Remover</h3>
+  
+      <div style="display: flex; justify-content: center;">
+        <input type="file" id="imageInput" accept=".png,.jpg,.jpeg," class="form-control metaform">
+        <button onclick="clearResults()" style="background-color: transparent; border: none;">
+        <img src="{% static 'Icons/deleteIcon.svg' %}">
+        </button>
+    </div>
+        <button onclick="removeMetadata()" class="btn btn-primary mt-3">Remove Metadata</button>
+  
+    <a id="downloadLink" style="display: none;" download="cleaned_image.png">Download Cleaned Image</a>
+
+    <script src="{% static 'js/metadata.js' %}"></script>
+    
+    
+{% endblock %}

@@ -1,5 +1,50 @@
+.metaform{
+  width: 50%;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'kanit-regular';
+}
+
+.styledform{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 2px solid rgb(206, 118, 132);
+}
+.form-control:focus{
+  border-color: rgb(186, 97, 112);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px pink;
+}
+.form-control::placeholder{
+  color: rgb(206, 118, 132);
+}
+
+.form-control[type="password"], .form-control[type="text"]{
+  font-family: 'kanit-regular';
+}
+.btn{
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn:hover{
+  background-color: #5a35a0;
+}
+
+#navigation{
+  color: white;
+  text-decoration: none;
+  
+}
+
 #navigation:hover {
-  color: pink;
+  color: #b38aff;
   transform: scale(1.05);
   transition: ease-in-out 0.3s;
 }

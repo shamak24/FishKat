@@ -11,9 +11,9 @@ function showToast(message, status) {
     if (status === 'success'){
         toastMsg.style.color = 'green'; 
     } else if (status === 'danger'){
-        toastMsg.style.color = 'red'; 
+        toastMsg.style.color = 'red';
     } else if (status === 'warning'){
-        toastMsg.style.color = 'orange'; 
+        toastMsg.style.color = 'orange';
     }
     
     const toast = new bootstrap.Toast(toastEl);

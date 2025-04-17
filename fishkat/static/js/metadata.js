@@ -3,6 +3,8 @@ function clearResults() {
     fileInput.value = "";
     const downloadLink = document.getElementById("downloadLink");
     downloadLink.ariaDisabled = true;
+    downloadLink.href = "#"; // Reset the href to prevent downloading old data
+    downloadLink.style.display = "none"; // Hide the link
 }
 
 
@@ -32,10 +34,17 @@ function removeMetadata() {
             // Convert to PNG (strips metadata)
             const cleanedImage = canvas.toDataURL("image/png");
 
-            // Enable download link
+            // Enable and style download link
             const downloadLink = document.getElementById("downloadLink");
             downloadLink.ariaDisabled = false;
             downloadLink.href = cleanedImage;
+            downloadLink.style.display = "inline-block"; // Ensure visibility
+            downloadLink.style.backgroundColor = "#007bff";
+            downloadLink.style.color = "white";
+            downloadLink.style.padding = "10px 20px";
+            downloadLink.style.borderRadius = "5px";
+            downloadLink.style.textDecoration = "none";
+            downloadLink.style.cursor = "pointer";
         };
     };
 

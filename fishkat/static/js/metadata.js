@@ -39,12 +39,6 @@ function removeMetadata() {
             downloadLink.ariaDisabled = false;
             downloadLink.href = cleanedImage;
             downloadLink.style.display = "inline-block"; // Ensure visibility
-            downloadLink.style.backgroundColor = "#007bff";
-            downloadLink.style.color = "white";
-            downloadLink.style.padding = "10px 20px";
-            downloadLink.style.borderRadius = "5px";
-            downloadLink.style.textDecoration = "none";
-            downloadLink.style.cursor = "pointer";
         };
     };
 

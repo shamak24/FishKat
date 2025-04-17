@@ -2,6 +2,8 @@ from django.shortcuts import render
 from PIL import Image
 from PIL.ExifTags import TAGS
 import io
+import json
+from django.http import JsonResponse, HttpResponse
 
 def exifviewer(request):
     metadata = {}

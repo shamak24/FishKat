@@ -12,10 +12,11 @@
 <section class="text-center text-white styledbg">
   <div class="container">
     <br><br><br><br><br><br>
-      <h1 class="kanit-bold"><span style="color: #b38aff">FishKat</span> – Smarter Security, Safer Browsing</h1>
-      <p class="kanit-light">AI-powered phishing detection and password analysis at your fingertips.</p>
+      <h1 class="kanit-bold"><span style="color: #b38aff">FishKat</span> – Protect Your Vibe, Secure Your Web</h1>
+      <p class="kanit-light">AI-driven tools for phishing detection and secure digital experiences.</p>
       <br><br><br>
     <div class="row">
+      <!-- PHISHING DETECTION -->
       <div class="col-md-4 " id="features">
         <a href="{% url 'phishing_index' %}" id="navigation" style="text-decoration: none;">
         <img src="{% static 'Icons/phish.svg' %}" alt="Phishing Detection" style="height: 100px">
@@ -24,6 +25,8 @@
         </a>
         <p class="kanit-light">Detect phishing websites with our AI-powered tool.</p>
       </div>
+
+      <!-- IMAGE METADATA REMOVER -->
       <div class="col-md-4" id="features">
         <a href="{% url 'metadata_index' %}" id="navigation" style="text-decoration: none;">
         <img src="{% static 'Icons/metaIcon.svg' %}" alt="MetadataRemover" style="height: 100px">
@@ -31,14 +34,52 @@
         </a>
         <p class="kanit-light">Protect your privacy by removing metadata from images</p>
       </div>
+
+      <!-- URL UNSHORTNER -->
       <div class="col-md-4" id="features">
-        <img src="{% static 'Icons/security.svg' %}" alt="Secure Browsing" style="height: 100px">
-        <h3 class="kanit-bold">Secure Browsing</h3>
-        <p class="kanit-light">Stay safe online with our security tools.</p>
+        <a href="{% url 'UrlUnshortner_index' %}" id="navigation" style="text-decoration: none;">
+        <img src="{% static 'Icons/urlunshort.svg' %}" alt="UrlUnshortner" style="height: 100px">
+        <h3 class="kanit-bold">URL Unshortner</h3>
+        </a>
+        <p class="kanit-light">Reveals original link from shortened URL.</p>
+      </div>
+
+      <!-- HASH GENERATOR -->
+      <div class="col-md-4 mt-5" id="features">
+        <a href="{% url 'hash_generator' %}" id="navigation" style="text-decoration: none;">
+        <img src="{% static 'Icons/hash.svg' %}" alt="Phishing Detection" style="height: 100px">
+        <h3 class="kanit-bold">
+          Hash Generator & Verifier</h3>
+        </a>
+        <p class="kanit-light">Generates and verifies hashes for data integrity and comparison.</p>
+      </div>
+
+      <!-- PASSWORD GENERATOR -->
+      <div class="col-md-4 mt-5" id="features">
+        <a href="{% url 'passwordgen_index' %}" id="navigation" style="text-decoration: none;">
+        <img src="{% static 'Icons/password.svg' %}" alt="Phishing Detection" style="height: 100px">
+        <h3 class="kanit-bold">
+          Password Generator</h3>
+        </a>
+        <p class="kanit-light">Creates secure, random passwords for safe online account protection.</p>
+      </div>
+
+      <!-- EXIFVIEWER -->
+      <div class="col-md-4 mt-5" id="features">
+        <a href="{% url 'exifviewer' %}" id="navigation" style="text-decoration: none;">
+        <img src="{% static 'Icons/exif.svg' %}" alt="Phishing Detection" style="height: 100px">
+        <h3 class="kanit-bold">
+          Image Metadata Reader</h3>
+        </a>
+        <p class="kanit-light">Extracts hidden metadata from uploaded image files for analysis.</p>
       </div>
     </div>
-    <br><br><br><br><br><br>
+    <br><br><br>
+    <h3 class="kanit-medium">and many more...</h3>
+    <br><br><br>
+    
   </div>
+  
 </section>
 
 <!-- About Section -->
@@ -48,7 +89,7 @@
     <h1 class="kanit-bold">💬 About Us</h1>
     <br><br>
     <div class="container text-center px-5 bigtextcontainer">
-      <p class="kanit-regular fs-4 bigtext"><span style="color: #b38aff;">FishKat</span> is an AI-powered website that detects phishing links and helps users avoid malicious sites. It analyzes URLs and key features using machine learning to provide fast, accurate, and reliable protection for safe browsing.With built-in cyber security tools, FishKat ensures your online security is never compromised. Stay protected, stay smart FishKat's got your back!</p>
+      <p class="kanit-regular fs-4 bigtext"><span style="color: #b38aff;">FishKat</span> is a robust cybersecurity platform offering essential tools like phishing detection, image metadata removal, URL unshortening, password generation, and more. It provides users with simple yet effective solutions to enhance online safety, protect digital data, and ensure security.</p>
     </div>
     <br><br><br><br><br><br>
   </div>

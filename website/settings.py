@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'endecode',
     'passwordgen',
     'hashgen',
+    'exifviewer',
 ]
 
 MIDDLEWARE = [

@@ -6,6 +6,11 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   font-family: 'kanit-regular';
 }
+.scrollable-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
 
 .styledform{
   width: 100%;

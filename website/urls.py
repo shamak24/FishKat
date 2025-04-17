@@ -10,6 +10,7 @@ from unshortner import urls
 from endecode import urls
 from passwordgen import urls
 from hashgen import urls
+from exifviewer import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls), 
@@ -20,4 +21,5 @@ urlpatterns = [
     path("endecode/", include("endecode.urls")),
     path("passwordgen/", include("passwordgen.urls")),
     path("hashgen/", include("hashgen.urls")),
+    path("exifviewer/", include("exifviewer.urls")),
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

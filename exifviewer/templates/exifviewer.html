@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %} 
-<title>Password Generator</title> 
+<title>ExifViewer</title> 
 {% endblock %}
 
 {% block styles %}
@@ -15,7 +15,14 @@
       justify-content: center;
       color: white;
       margin: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: 'kanit-regular', sans-serif;
+    }
+    .scroll-box {
+        max-height: 300px;
+        overflow-y: auto;
+        border: 1px solid #444;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
     }
     .card {
       border-radius: 1rem;
@@ -68,6 +75,10 @@
         background-color: #ff4dff;
         border-color: #5a35a0;
     }
+    table {
+      color: white;
+      background-color: #5a35a0;
+    }
 
     .alert {
       padding: 1rem;
@@ -90,39 +101,44 @@
 {% endblock %}
 
 {% block body %}
-<div class="container d-flex flex-column align-items-center justify-content-center vh-100">
+<div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 120vh;">
   <div class="card bg-transparent text-white">
-    <h3 class="text-center mb-4 kanit-bold">🔑Strong Password Generator</h3>
+    <h3 class="text-center mb-4 kanit-bold">🖼️Image Metadata Reader🔍</h3>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="mb-3">
-          <label for="length" class="form-label">Password Length</label>
-          <input type="number" name="length" id="length" class="form-control" value="{{ length|default:12 }}" min="4" max="64" required>
+          <label for="image" class="form-label">Upload an image file</label>
+          <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="uppercase" id="uppercase" {% if uppercase %}checked{% endif %}>
-          <label class="form-check-label" for="uppercase">Include Uppercase</label>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-purple btn-primary kanit-regular">Read Metadata</button>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="numbers" id="numbers" {% if numbers %}checked{% endif %}>
-          <label class="form-check-label" for="numbers">Include Numbers</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="symbols" id="symbols" {% if symbols %}checked{% endif %}>
-          <label class="form-check-label" for="symbols">Include Symbols</label>
-        </div>
-        <button type="submit" class="btn btn-primary btn-generate w-100 mt-3">Generate Password</button>
       </form>
   
-      {% if password %}
-      <div class="mt-4">
-        <label class="form-label">Generated Password</label>
-        <div class="input-group">
-          <input type="text" id="generatedPassword" class="form-control" value="{{ password }}" readonly>
-          <button class="btn btn-generate btn-copy" type="button" onclick="copyPassword()">Copy</button>
-        </div>
+      {% if metadata %}
+      <hr>
+      <h5 class="mt-4 kanit-regular">🔍 Extracted Metadata:</h5>
+      <div class="scroll-box mt-3 mb-2">
+        <table class="table table-dark table-striped mb-0">
+          <thead>
+            <tr>
+              <th>Tag</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for tag, value in metadata.items %}
+            <tr>
+              <td>{{ tag }}</td>
+              <td style="word-break: break-word;">{{ value }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
+      {% elif no_metadata %}
+      <div class="alert alert-warning mt-4">No metadata found in the uploaded image.</div>
       {% endif %}
     </div>
 </div>
@@ -144,14 +160,6 @@
     
     const toast = new bootstrap.Toast(toastEl);
     toast.show();
-  }
-
-  function copyPassword() {
-    const passwordField = document.getElementById("generatedPassword");
-    passwordField.select();
-    passwordField.setSelectionRange(0, 99999);
-    document.execCommand("copy");
-    showToast("✅ Password copied to clipboard!");
   }
 </script>
 {% endblock %}
